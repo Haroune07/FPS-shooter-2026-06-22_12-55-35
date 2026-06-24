@@ -2,8 +2,13 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
-    private MyInputActions actions = new();
+    private MyInputActions actions;
     // Start is called once before the first execution of Update after the MonoBehaviour is created\\
+
+    void Awake()
+    {
+        actions = new();
+    }
 
     void OnEnable()
     {

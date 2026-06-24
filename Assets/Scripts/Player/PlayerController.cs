@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public HSM<PlayerController> Hsm {get; private set;}
     private StateFactory<PlayerController> stateFactory;
 
+    public PlayerStats Stats;
+
     void Awake()
     {
         Input = GetComponent<InputHandler>();
