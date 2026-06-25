@@ -36,59 +36,91 @@ public abstract class State<T>
         target.EnterStates();
     }
     
+    /// <summary>
+    /// executed once per state enter
+    /// </summary>
     public virtual void Enter()
     {
         
     }
 
+    /// <summary>
+    /// executed once per state exit
+    /// </summary>
     public virtual void Exit()
     {
         
     }
 
+    /// <param name="other">Collider of the other object</param>
     public virtual void OnTriggerEnter(Collider other)
     {
         
     }
 
+    /// <param name="other">Collider of the other object</param>
     public virtual void OnTriggerExit(Collider other)
     {
         
     }
-
+    
+    /// <param name="other">Collider of the other object</param>
     public virtual void OnTriggerStay(Collider other)
     {
         
     }
 
+    /// <summary>
+    ///     state logic executed each frame
+    /// </summary>
+    /// <param name="deltaTime">time since last update call</param>
     public virtual void Update(float deltaTime)
     {
         
     }
 
+    /// <summary>
+    /// state logic executed each fixed time interval (see unity for exact numbers)
+    /// </summary>
+    /// <param name="fixedDeltaTime">time since last FixedUpdate call</param>
     public virtual void FixedUpdate(float fixedDeltaTime)
     {
         
     }
 
+
+    /// <summary>
+    /// enter states from parent to children
+    /// </summary>
     public void EnterStates()
     {
         Enter();
         subState?.EnterStates();
     }
     
+    /// <summary>
+    /// exit states from children to parent
+    /// </summary>
     public void ExitStates()
     {
         subState?.ExitStates();
         Exit();
     }
 
+    /// <summary>
+    /// updating states from parent to children
+    /// </summary>
+    /// <param name="deltaTime">time since last update call</param>
     public void UpdateStates(float deltaTime)
     {
         Update(deltaTime);
         subState?.UpdateStates(deltaTime);
     }
 
+    /// <summary>
+    /// fixed update state from parent to children
+    /// </summary>
+    /// <param name="fixedDeltaTime"></param>
     public void FixedUpdateStates(float fixedDeltaTime)
     {
         FixedUpdate(fixedDeltaTime);
@@ -113,12 +145,18 @@ public abstract class State<T>
         subState?.OnTriggerStayCascade(other);
     }
 
+    /// <summary>
+    /// verifiying state transitions from parent to children
+    /// </summary>
     public void CheckTransitionsCascade()
     {
         CheckTransitions();
         subState?.CheckTransitionsCascade();
     }
 
+    /// <summary>
+    /// method to call each frame to conditionally transition states
+    /// </summary>
     public virtual void CheckTransitions()
     {
         
