@@ -14,13 +14,13 @@ public class WalkState : State<PlayerController>
     {
         rb = ctx.Rb;
         transform = ctx.transform;
-        float walkSpeed = ctx.Stats.walkSpeed;
+        walkSpeed = ctx.Stats.walkSpeed;
     }
 
     public override void FixedUpdate(float fixedDeltaTime)
     {
         move = ctx.Input.Move;
-
+        
         Vector3 desiredVel = (transform.forward * move.y + transform.right * move.x) * walkSpeed;
     
         smoothVel = Vector3.SmoothDamp(smoothVel, desiredVel, ref refSmoothVel, .01f);

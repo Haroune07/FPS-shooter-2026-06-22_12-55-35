@@ -12,7 +12,7 @@ public class GroundedState : State<PlayerController>
     {
         if(ctx.Input.JumpThisFrame)
         {
-            ctx.Hsm.SwitchRootState(stateFactory.Get<AirborneState>());
+            // ctx.Hsm.SwitchRootState(stateFactory.Get<AirborneState>());
         }
     }
 }
