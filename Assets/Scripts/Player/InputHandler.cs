@@ -24,4 +24,6 @@ public class InputHandler : MonoBehaviour
     public Vector2 Look => actions.Player.Look.ReadValue<Vector2>();
     public bool JumpThisFrame => actions.Player.Jump.WasPressedThisFrame();
     public bool Sprint => actions.Player.Sprint.IsPressed();
+    public bool CrouchThisFrame => actions.Player.Crouch.WasPressedThisFrame();
+    public bool HoldCrouch => actions.Player.Crouch.IsPressed();
 }
