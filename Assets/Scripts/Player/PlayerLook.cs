@@ -19,8 +19,8 @@ public class PlayerLook : MonoBehaviour
     void Update()
     {
         look = input.Look;
-        rotX -= look.y * Time.deltaTime * sensibility;
         rotY += look.x * Time.deltaTime * sensibility;
+        rotX -= look.y * Time.deltaTime * sensibility;
         rotX = Mathf.Clamp(rotX, -xClampAngle, xClampAngle);
         Quaternion playerTurnRotation = Quaternion.Euler(0, rotY, 0);
         Quaternion camRotation = Quaternion.Euler(rotX, 0, 0);

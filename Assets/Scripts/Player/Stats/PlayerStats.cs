@@ -8,4 +8,5 @@ public class PlayerStats : ScriptableObject
     public float jumpForce = 5;
     public float crouchWalkSpeed = 4;
     public float decelerationFactor = 15;
+    public float groundRayCastDist = 1.2f;
 }
