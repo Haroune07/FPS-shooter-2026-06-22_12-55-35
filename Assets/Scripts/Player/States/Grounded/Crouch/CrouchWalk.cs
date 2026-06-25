@@ -7,9 +7,7 @@ public class CrouchWalk : State<PlayerController>
 
     public override void FixedUpdate(float fixedDeltaTime)
     {
-        /// walk
-        /// 
-        /// (at this point consider decoupling state movment logic to elsewhere cuz its getting repetitive)
+        ctx.Mover.Move(ctx.Stats.crouchWalkSpeed);
     }
 
     public override void CheckTransitions()

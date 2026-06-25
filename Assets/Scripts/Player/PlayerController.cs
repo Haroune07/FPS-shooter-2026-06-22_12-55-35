@@ -10,10 +10,15 @@ public class PlayerController : MonoBehaviour
     private StateFactory<PlayerController> stateFactory;
     public PlayerStats Stats;
 
+    public IMover Mover {get;private set;}
+
+    public float groundRayCastDist = 1.2f;
+
     void Awake()
     {
         _input = GetComponent<InputHandler>();
         Rb = GetComponent<Rigidbody>();
+        Mover = new StandardMover(this);
         stateFactory = new(this);
         Hsm = new (this, stateFactory.Get<GroundedState>()); 
     }
@@ -45,4 +50,16 @@ public class PlayerController : MonoBehaviour
         Hsm.OnTriggerExit(other);        
     }
 
+    public bool Grounded()
+    {
+        return Physics.Raycast(transform.position, Vector3.down, groundRayCastDist);
+    }
+
+    public bool IsOnSlope()
+    {
+        Vector3 normal = Vector3.up;
+        if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, groundRayCastDist))
+            normal = hit.normal;
+        return normal != Vector3.up;
+    }
 }

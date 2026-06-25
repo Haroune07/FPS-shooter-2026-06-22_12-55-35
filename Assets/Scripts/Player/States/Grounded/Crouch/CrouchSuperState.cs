@@ -9,6 +9,7 @@ public class CrouchSuperState : State<PlayerController>
     public override void Enter()
     {
         Debug.Log("Crouch entered");
+        SetSubState(stateFactory.Get<CrouchIdle>());
         // reduce height
     }
 

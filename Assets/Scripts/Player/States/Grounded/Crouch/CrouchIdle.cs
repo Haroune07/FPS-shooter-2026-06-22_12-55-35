@@ -1,3 +1,4 @@
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class CrouchIdle : State<PlayerController>
@@ -8,7 +9,7 @@ public class CrouchIdle : State<PlayerController>
 
     public override void FixedUpdate(float fixedDeltaTime)
     {
-        // handle deceleration
+        ctx.Mover.Decelerate(ctx.Stats.decelerationFactor, fixedDeltaTime);
     }
 
     public override void CheckTransitions()

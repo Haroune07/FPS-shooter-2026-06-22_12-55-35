@@ -7,4 +7,5 @@ public class PlayerStats : ScriptableObject
     public float sprintSpeed = 14;
     public float jumpForce = 5;
     public float crouchWalkSpeed = 4;
+    public float decelerationFactor = 15;
 }
