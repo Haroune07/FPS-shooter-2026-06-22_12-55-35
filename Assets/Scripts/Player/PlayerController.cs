@@ -5,10 +5,10 @@ public class PlayerController : MonoBehaviour
 
     private InputHandler _input;
     private StateFactory<PlayerController> _stateFactory;
-    public InputData Input {get;set;}
+    public InputData Input {get; private set;}
     public Rigidbody Rb {get; private set;}
     public HSM<PlayerController> Hsm {get; private set;}
-    public PlayerStats Stats {get; private set;}
+    [field : SerializeField] public PlayerStats Stats {get; private set;}
     public IMover Mover {get;private set;}
 
     void Awake()
