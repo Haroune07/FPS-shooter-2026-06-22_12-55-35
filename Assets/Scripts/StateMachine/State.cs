@@ -22,6 +22,11 @@ public abstract class State<T>
         target.EnterStates();
     }
 
+    /// <summary>
+    /// Transition from one state to another brother state in the state hierarchy
+    /// </summary>
+    /// <param name="target">brother state to trantition to</param>
+    /// <exception cref="System.Exception">Exception thrown when a root state uses this method - (a root state doesnt have any parent so it doesnt have brothers)</exception>
     public void TransitionSelf(State<T> target)
     {
         ExitStates();
@@ -155,7 +160,7 @@ public abstract class State<T>
     }
 
     /// <summary>
-    /// method to call each frame to conditionally transition states
+    /// method to call each frame to conditionally transition states. Runs in parallel with the Update() method
     /// </summary>
     public virtual void CheckTransitions()
     {
