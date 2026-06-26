@@ -36,7 +36,7 @@ public class StandardMover : IMover
         _smoothVel = Vector3.SmoothDamp(_smoothVel, desiredVel, ref _refSmoothVel, .01f);
         Vector3 surfaceNormal = Vector3.up;
 
-        if(Physics.Raycast(_ctx.transform.position, Vector3.down, out RaycastHit hit , 2))
+        if(Physics.Raycast(_ctx.transform.position, Vector3.down, out RaycastHit hit , _ctx.Stats.groundRayCastDist))
             surfaceNormal = hit.normal;
         
         Vector3 projectedVel = Vector3.ProjectOnPlane(_smoothVel, surfaceNormal);
