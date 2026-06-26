@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using UnityEngine;
 
 public class IdleState : State<PlayerController>
