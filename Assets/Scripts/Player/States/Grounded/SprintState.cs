@@ -14,6 +14,11 @@ public class SprintState : State<PlayerController>
     public override void CheckTransitions()
     {
         if (!ctx.Input.Sprint)
-            TransitionSelf(stateFactory.Get<MoveState>());
+        {
+            if (ctx.Input.Move == Vector2.zero)
+                TransitionSelf(stateFactory.Get<IdleState>());
+            else
+                TransitionSelf(stateFactory.Get<MoveState>());
+        }
     }
 }
