@@ -19,9 +19,4 @@ public class IdleState : State<PlayerController>
         if (ctx.Input.CrouchedThisFrame)
             TransitionSelf(stateFactory.Get<CrouchSuperState>());
     }
-
-    public override void Exit()
-    {
-        Debug.Log("exit idle");
-    }
 }
