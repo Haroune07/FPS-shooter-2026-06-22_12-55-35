@@ -2,23 +2,23 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-    public float sensibility = 20, xClampAngle = 40;
+    public float sensibility = 20, xClampAngle = 80;
     private float rotX, rotY;
     private Vector2 look;
-    private InputHandler input;
     public Camera cam;
     public float rotateSmoothFactor = 40f;
+    private PlayerController playerController;
 
     void Awake()
     {
-        input = GetComponent<InputHandler>();
+        playerController = GetComponent<PlayerController>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
-        look = input.Look;
+        look = playerController.Input.Look;
         rotY += look.x * Time.deltaTime * sensibility;
         rotX -= look.y * Time.deltaTime * sensibility;
         rotX = Mathf.Clamp(rotX, -xClampAngle, xClampAngle);
