@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        transform.localScale = Stats.standingScale;
         _input = GetComponent<InputHandler>();
         Rb = GetComponent<Rigidbody>();
         Mover = new StandardMover(this);

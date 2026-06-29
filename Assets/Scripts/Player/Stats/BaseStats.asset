@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413025ee36e106974855cb72bbd95189, type: 3}
   m_Name: BaseStats
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
-  walkSpeed: 9
-  sprintSpeed: 15
-  jumpForce: 5
+  walkSpeed: 7
+  sprintSpeed: 12
+  jumpForce: 6
+  crouchWalkSpeed: 4
+  decelerationFactor: 15
+  groundRayCastDist: 1.15
+  AirborneMoveSpeed: 3
+  standingScale: {x: 1, y: 1, z: 1}
+  ceilingHitRayCastLength: 1
+  yVelFallThreshold: -1
+  AerialMovementControlFactor: 0.8

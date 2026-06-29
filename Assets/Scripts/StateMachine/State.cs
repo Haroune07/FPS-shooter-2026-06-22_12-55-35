@@ -14,6 +14,22 @@ public abstract class State<T>
         stateFactory = factory;
     }
 
+    /// <summary>
+    /// Sets current childState with cascade exiting but no cascade entering - only the argument state calls the enter state. 
+    /// this method is meant to be used in State.Enter() to decide what is going to be the substate.
+    /// </summary>
+    /// <param name="target">new sub state to be set </param>
+    public void InitSubState(State<T> target)
+    {
+        subState?.ExitStates();
+        subState = target;
+        subState.parentState = this;
+    }
+
+    /// <summary>
+    /// Sets current child state with cascade exiting the previous state and cascade entering the new target state
+    /// </summary>
+    /// <param name="target">new sub state to be set</param>
     public void SetSubState(State<T> target)
     {
         subState?.ExitStates();
@@ -40,13 +56,13 @@ public abstract class State<T>
         parentState.subState = target;
         target.EnterStates();
     }
-    
+
     /// <summary>
     /// executed once per state enter
     /// </summary>
     public virtual void Enter()
     {
-        
+
     }
 
     /// <summary>
@@ -54,25 +70,25 @@ public abstract class State<T>
     /// </summary>
     public virtual void Exit()
     {
-        
+
     }
 
     /// <param name="other">Collider of the other object</param>
     public virtual void OnTriggerEnter(Collider other)
     {
-        
+
     }
 
     /// <param name="other">Collider of the other object</param>
     public virtual void OnTriggerExit(Collider other)
     {
-        
+
     }
-    
+
     /// <param name="other">Collider of the other object</param>
     public virtual void OnTriggerStay(Collider other)
     {
-        
+
     }
 
     /// <summary>
@@ -81,7 +97,7 @@ public abstract class State<T>
     /// <param name="deltaTime">time since last update call</param>
     public virtual void Update(float deltaTime)
     {
-        
+
     }
 
     /// <summary>
@@ -90,7 +106,7 @@ public abstract class State<T>
     /// <param name="fixedDeltaTime">time since last FixedUpdate call</param>
     public virtual void FixedUpdate(float fixedDeltaTime)
     {
-        
+
     }
 
 
@@ -102,7 +118,7 @@ public abstract class State<T>
         Enter();
         subState?.EnterStates();
     }
-    
+
     /// <summary>
     /// exit states from children to parent
     /// </summary>
