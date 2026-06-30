@@ -1,24 +1,30 @@
 using UnityEngine;
 
 /// <summary>
-/// centralize input in player HSM for consistent values instead of having each class query input handler 
+/// centralize input for consistent values instead of having each class query input handler 
 /// </summary>
 public struct InputData
 {
-    public Vector2 Move;
-    public Vector2 Look;
-    public bool JumpThisFrame;
-    public bool Sprint;
-    public bool CrouchedThisFrame;
-    public bool HoldCrouch;
+    public Vector2 Move {get; private set;}
+    public Vector2 Look {get; private set;}
+    public bool JumpThisFrame {get; private set;}
+    public bool Sprint {get; private set;}
+    public bool CrouchedThisFrame {get; private set;}
+    public bool HoldCrouch {get; private set;} // use this for slide later on
+    public bool FirePressed {get; private set;}
+    public bool AimHeld {get; private set;}
+    public bool ReloadThisFrame {get; private set;}
 
-    public InputData(Vector2 move, Vector2 look, bool jumpThisFrame, bool sprint, bool crouchedThisFrame, bool holdCrouch)
+    public InputData(InputHandler inputHandler)
     {
-        Move = move;
-        Look = look;
-        JumpThisFrame = jumpThisFrame;
-        Sprint = sprint;
-        CrouchedThisFrame = crouchedThisFrame;
-        HoldCrouch = holdCrouch;
+        Move = inputHandler.Move;
+        Look = inputHandler.Look;
+        JumpThisFrame = inputHandler.JumpThisFrame;
+        Sprint = inputHandler.Sprint;
+        CrouchedThisFrame = inputHandler.CrouchThisFrame;
+        HoldCrouch = inputHandler.HoldCrouch;
+        FirePressed = inputHandler.FirePressed;
+        AimHeld = inputHandler.AimHeld;
+        ReloadThisFrame = inputHandler.ReloadThisFrame;
     }
 }

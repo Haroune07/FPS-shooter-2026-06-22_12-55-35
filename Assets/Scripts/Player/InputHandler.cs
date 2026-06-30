@@ -26,4 +26,7 @@ public class InputHandler : MonoBehaviour
     public bool Sprint => actions.Player.Sprint.IsPressed();
     public bool CrouchThisFrame => actions.Player.Crouch.WasPressedThisFrame();
     public bool HoldCrouch => actions.Player.Crouch.IsPressed();
+    public bool FirePressed => actions.Player.Attack.IsPressed();
+    public bool AimHeld => actions.Player.Aim.IsPressed();
+    public bool ReloadThisFrame => actions.Player.Reload.WasPressedThisFrame();
 }

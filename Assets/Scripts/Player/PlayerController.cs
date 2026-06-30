@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    private InputHandler _input;
+    private InputHandler _inputHandler;
     private StateFactory<PlayerController> _stateFactory;
     public InputData Input {get; private set;}
     public Rigidbody Rb {get; private set;}
@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         transform.localScale = Stats.standingScale;
-        _input = GetComponent<InputHandler>();
+        _inputHandler = GetComponent<InputHandler>();
         Rb = GetComponent<Rigidbody>();
         Mover = new StandardMover(this);
         _stateFactory = new(this);
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Input = new (_input.Move, _input.Look, _input.JumpThisFrame, _input.Sprint, _input.CrouchThisFrame, _input.HoldCrouch);
+        Input = new (_inputHandler);
         Hsm.Update(Time.deltaTime);
     }
 
